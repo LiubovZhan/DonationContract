@@ -6,17 +6,21 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   for (const account of accounts) {
     console.log(account.address);
   }
+  
 });
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+const { privateKey} = require('./secrets.json');
+const { url } = require('./secrets.json');
+
 module.exports = {
   solidity: "0.7.3",
   networks: {
     rinkeby: {
-      url: "", //Infura url with projectId
-      accounts: [""] // add the account that will deploy the contract (private key)
+      url: [url], 
+      accounts: [privateKey]
      },
    }
 };
